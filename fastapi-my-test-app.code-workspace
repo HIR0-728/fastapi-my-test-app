@@ -1,0 +1,58 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		// リンタ設定
+		"python.linting.enabled": true,
+		"python.linting.pylintEnabled": false,
+		"python.linting.flake8Enabled": true,
+		"python.linting.lintOnSave": true,
+		"python.linting.flake8Args": [
+		  "--max-line-length=88",
+		  "--ignore=E203,E712,W503,W504"
+		],
+		// フォーマッタ設定
+		"python.formatting.provider": "none",
+		"editor.formatOnSave": true,
+		"[python]": {
+		  "editor.defaultFormatter": "ms-python.black-formatter"
+		},
+		"editor.formatOnPaste": false,
+		"python.formatting.blackArgs": [
+		  "--line-length=88"
+		],
+			"editor.codeActionsOnSave": {
+				"source.organizeImports": true
+			},
+		"isort.args":["--profile", "black"],
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Fast API(app.main) Start",
+				"type": "python",
+				"request": "launch",
+				"module": "uvicorn",
+				"args": ["main:app", "--reload", "--port=8003" ],
+				"env": { "ENV": "dev",
+				"LOG_LEVEL":"debug",
+				},
+				"jinja": true,
+				// "purpose": ["debug-test"],
+			},
+			{
+				"name": "Python: 現在のファイル",
+				"type": "python",
+				"request": "launch",
+				"program": "${file}",
+				"console": "integratedTerminal",
+				"justMyCode": true
+			}
+		],
+		"compounds": []
+	}
+}
